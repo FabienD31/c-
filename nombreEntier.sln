@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nombreEntier", "nombreEntier\nombreEntier.csproj", "{DCBF5C49-8B2D-446D-80BE-6C4E03CEEA04}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCBF5C49-8B2D-446D-80BE-6C4E03CEEA04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCBF5C49-8B2D-446D-80BE-6C4E03CEEA04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCBF5C49-8B2D-446D-80BE-6C4E03CEEA04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCBF5C49-8B2D-446D-80BE-6C4E03CEEA04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
