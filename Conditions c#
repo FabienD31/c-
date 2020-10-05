@@ -1,0 +1,38 @@
+using System;
+
+namespace condition
+{
+    class MainClass
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Saisie une valeur Minimum");
+            int ValueMin = Int32.Parse(Console.ReadLine());
+
+            Console.WriteLine("Saisie une valeur Maximum");
+            int ValueMax = Int32.Parse(Console.ReadLine());
+
+            while (ValueMax < ValueMin)
+            {
+                Console.WriteLine("Ta valeur Maximum est plus petit que ta valeur Minimum, re-saisie une valeur Max");
+                ValueMax = Int32.Parse(Console.ReadLine());
+            }
+         
+            Console.WriteLine("Saisie une valeur");
+            int Value = Int32.Parse(Console.ReadLine());
+
+            if (ValueMin > Value)
+            {
+               Console.WriteLine($"ta valeur {Value} est trop petit");
+            }
+            else if (ValueMax < Value)
+            {
+               Console.WriteLine($"ta valeur {Value} est trop grande");
+            }
+            else
+            {
+                Console.WriteLine("Bingo");
+            }                    
+        }
+    }
+}
