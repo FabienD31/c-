@@ -1,0 +1,24 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    int[] tableau1 = new int[3];
+tableau1[0] = 1;
+tableau1[1] = 2;
+tableau1[2] = 3;
+
+int[] tableau2 = new int[3];
+tableau2[0]= 4;
+tableau2[1]= 5;
+tableau2[2]= 6;
+
+int[] tableau3 = new int[6];
+tableau1.CopyTo(tableau3, 0);
+tableau2.CopyTo(tableau3, tableau1.Length); 
+
+foreach (int i in tableau3)
+	{
+	    Console.WriteLine(i);
+  }
+}
+}
