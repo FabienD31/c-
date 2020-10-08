@@ -1,0 +1,29 @@
+using System;
+
+namespace Dojo1
+{
+    class MainClass
+    {
+        public static void Main(string[] args)
+        {
+            //tableau uniforme//
+            int[,] tableauU = new int[3, 3] { { 1, 2, 3 },{ 2, 3, 4},{ 3, 4, 5}};
+            //ajout element tableau uniforme//
+             
+            //tableau irregulier//
+            int[][] tableauIrregulier = new int[3][];
+            tableauIrregulier[0] = new int[3] { 1, 2, 3 };
+            tableauIrregulier[1] = new int[2] { 3, 4 };
+            tableauIrregulier[2] = new int[1] { 5 };
+            
+            //visualiser le tableauIrregulier//
+            for (int i=0; i < tableauIrregulier.Length; i++)
+            {
+              for (int j=0; j < tableauIrregulier[i].Length;j++)
+              {
+                Console.WriteLine(tableauIrregulier[i][j]);
+              }
+            } 
+        }
+    }
+}
