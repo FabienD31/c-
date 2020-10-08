@@ -1,0 +1,36 @@
+using System;
+
+namespace Boucle_quete_c
+{
+    class MainClass
+    {
+        public static void Main(string[] args)
+        {
+            string[] moves = new string[32];
+
+            for (int i = 0; i < moves.Length; i++)
+            {
+                Console.WriteLine("saisie un pas de danse, si fini saisir 'done' ");
+                string stockDePas = Console.ReadLine();
+
+
+                if (stockDePas == "done")
+                {
+                    break;
+                }
+                else
+                {
+                    moves[i] = stockDePas;   
+                }
+            }
+            Console.WriteLine("Combien de fois je repète ma chorégraphie?");
+            int nombreIteration = Int32.Parse(Console.ReadLine());
+
+            foreach(string pas in moves )
+            {
+                Console.Write($"{pas}");
+            }
+
+        }
+    }
+}
