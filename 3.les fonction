@@ -1,0 +1,78 @@
+using System;
+
+namespace LesFonctions
+{
+    class MainClass
+    {
+        public static void Main(string[] arg)
+        {
+            while (true)
+            { 
+                Console.WriteLine("Saisir un 1er nombre");
+                float firstOperand = float.Parse(Console.ReadLine());
+                Console.WriteLine("Saisir un 2iem nombre");
+                float secondOperand = float.Parse(Console.ReadLine());
+                Console.WriteLine("choisi un operand");
+                string operand = Console.ReadLine();
+
+                if (operand == "+")
+                {
+                    float result = Add(firstOperand, secondOperand);
+                    Console.WriteLine(result);
+                }
+                if (operand == "-")
+                {
+                    float result = Substract(firstOperand, secondOperand);
+                    Console.WriteLine(result);
+                }
+                if (operand == "*" || operand == "x")
+                {
+                    float result = Multiply(firstOperand, secondOperand);
+                    Console.WriteLine(result);
+                }
+                if (operand == "/")
+                {
+                    float result = Divide(firstOperand, secondOperand);
+                    Console.WriteLine(result);
+                }
+                if (operand == "%")
+                {
+                    int result = Modulo((int)firstOperand, (int)secondOperand);
+                    Console.WriteLine(result);
+                }
+                else
+                {
+                    Console.WriteLine("Erreur, saisir un opérant");
+                }
+
+            }
+        }
+
+        public static float Add(float nb1, float nb2)
+        {
+            return nb1 + nb2;
+        }
+
+        public static float Substract(float nb1, float nb2)
+        {
+            return nb1 - nb2;
+        }
+
+        public static float Multiply(float nb1, float nb2)
+        {
+            return nb1 * nb2;
+        }
+
+        public static float Divide(float nb1, float nb2)
+        {
+            return nb1 / nb2;
+        }
+
+        public static int Modulo(int nb1, int nb2)
+        {
+            return (nb1%nb2);
+        }
+
+        
+    }
+}
