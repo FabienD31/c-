@@ -1,0 +1,58 @@
+using System;
+
+class MainClass
+{
+    public static void Main(string[] args)
+    {
+        Character1 Player1 = new Character1();
+        Player1.NamePersonnage = "Hitman";
+        Player1.pv = 100;
+        Player1.Forceattaque = 10;
+        Player1.Forcedefense = 5;
+
+        Character1 Player2 = new Character1();
+        Player2.NamePersonnage = "Sangoku";
+        Player2.pv = 200;
+        Player2.Forceattaque = 8;
+        Player2.Forcedefense = 5;
+
+        while (Player1.IsAlive() && Player2.IsAlive())
+        {
+            Player1.Attack(Player2);
+            Console.WriteLine("Sangoku " + Player2.pv);
+            Player2.Attack(Player1);
+            Console.Write("Hitman " + Player1.pv + "    ");
+        }
+    }
+}
+public class Character1
+{
+    public string NamePersonnage;
+    public int pv;
+    public int Forceattaque;
+    public int Forcedefense;
+
+    public bool IsAlive()
+    {
+        if (pv <= 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+        
+    }
+    public void Attack(Character1 attaqué)
+    {
+        attaqué.pv = (attaqué.pv) - (Forceattaque - attaqué.Forcedefense);
+        if (attaqué.pv < 0)
+        {
+            attaqué.pv = 0;
+        }
+    }
+
+}
+
+
