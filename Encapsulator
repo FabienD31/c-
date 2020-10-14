@@ -1,0 +1,113 @@
+using System;
+namespace ScopeTest
+{
+    public class MainProgram
+    {
+        public static void Main()
+        {
+            BeerEncapsulator beerEncapsulator = new BeerEncapsulator();
+          
+           
+
+            Console.WriteLine("Saisir le nombre de Litre de biere");
+            beerEncapsulator.AddBeer(Double.Parse(Console.ReadLine()));
+
+
+            Console.WriteLine("Saisir le nombre de bouteille vide");
+            beerEncapsulator.SetBottle(Int32.Parse(Console.ReadLine()));
+
+
+            Console.WriteLine("Saisir le nombre de capsule disponible");
+            beerEncapsulator.SetCapsules(Int32.Parse(Console.ReadLine()));
+
+            beerEncapsulator.ProduceEncapsulatedBeerBottles();
+           
+
+
+        }
+    }
+    public class BeerEncapsulator
+    {
+        private double _avalaibleBeerVolume; //nombre de Centilitre de biere dispo
+        private int _avalaibleBottles; //nombre de bouteille dispo
+        private int _avalaibleCapsules; //nombre de capsule dispo
+
+        int BottleNumber = 0;
+
+
+        //Ajout de biere// 1 fonction, celle d'ajouter de la biere//
+        public void AddBeer(double BeerVolume)
+        {
+            if(BeerVolume > 0)
+            {
+                // Vérifier que je n'enlève pas de stock
+                _avalaibleBeerVolume += BeerVolume;
+            }
+            
+        }
+
+        public void ProduceEncapsulatedBeerBottles()
+        {
+
+            while (true)
+            {
+                while (_avalaibleBeerVolume > 0.33 && _avalaibleBottles > 0 && _avalaibleCapsules > 0)
+                {
+                    _avalaibleBottles = _avalaibleBottles - 1;
+                    _avalaibleBeerVolume = _avalaibleBeerVolume - 0.33;
+                    _avalaibleCapsules = _avalaibleCapsules - 1;
+                    BottleNumber += 1;
+                }
+                Console.WriteLine("Le nombre de bouteille produite est de " + BottleNumber);
+
+                if (_avalaibleBeerVolume < 0.33)
+                {
+                    Console.WriteLine("Il manque de la Biere ajout des Litres");
+                    _avalaibleBeerVolume = Int32.Parse(Console.ReadLine());
+                }
+                if (_avalaibleBottles <= 0)
+                {
+                    Console.WriteLine("Il manque des bouteilles ajout des bouteilles");
+                    _avalaibleBottles = Int32.Parse(Console.ReadLine());
+
+                }
+                if (_avalaibleCapsules <= 0)
+                {
+                    Console.WriteLine("Il manque des capsules ajout des capsules");
+                    _avalaibleCapsules = Int32.Parse(Console.ReadLine());
+                }
+            }
+        }
+
+
+
+        public double GetBeerVolume()
+        {
+            return _avalaibleBeerVolume;
+        }
+        
+
+
+        public void SetBottle(int EmptyBottle)
+        {
+            _avalaibleBottles += EmptyBottle ;
+        }
+        public int GetBottle()
+        { 
+            return _avalaibleBottles;
+        }
+
+
+        public int GetCapsules()
+        {
+            return _avalaibleCapsules;
+        }
+        public void SetCapsules(int capsule)
+        {
+            _avalaibleCapsules += capsule;
+        }
+
+
+
+    }
+}
