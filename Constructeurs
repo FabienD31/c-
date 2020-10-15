@@ -1,0 +1,75 @@
+using System;
+
+namespace Constructeurs
+{
+    class MainClass
+    {
+        public static void Main(string[] args)
+        {
+            
+
+            Console.WriteLine("Souhaite tu saisir 1 ou 2 valeur?");
+            int ValeurUser = Int32.Parse(Console.ReadLine());
+
+            if (ValeurUser == 1)
+            {
+                Console.WriteLine("Saisir le nombre d'etage souhaité");
+                int numberFloorChoose = Int32.Parse(Console.ReadLine());
+                Building buildingSize = new Building(numberFloorChoose);
+                Console.WriteLine($"La taille du batiment est: {buildingSize.GetSizeBuilding()} metres");
+                Console.WriteLine($"Le nombre d'etage du batiment est: {buildingSize.GetFloorNumber()} metres");
+                Console.WriteLine($"La taille d'etage max est: {buildingSize.GetFloorMaxSize()} metres");
+
+            }
+
+            if (ValeurUser == 2)
+            {
+                Console.WriteLine("Saisir le nombre d'etage souhaité");
+                int numberFloorChoose = Int32.Parse(Console.ReadLine());
+
+
+                Console.WriteLine("Saisir la taille du building souhaité");
+                double buildingSizeChoose = double.Parse(Console.ReadLine());
+                Building buildingSize2 = new Building(numberFloorChoose ,buildingSizeChoose);
+
+                Console.WriteLine($"Le nombre d'etage du batiment est: {buildingSize2.GetFloorNumber()}");
+                Console.WriteLine("La taille du building est de : " + buildingSize2.GetSizeBuilding() + "metres");
+                Console.WriteLine($"La taille d'etage max est: {buildingSize2.GetFloorMaxSize()} metres");
+
+            }
+        }
+    }
+    class Building
+    {
+        private double _SizeBuilding;
+        private int _FloorNumber;
+
+
+        public Building(int FloorNumber)
+        {
+            _SizeBuilding = (3 * FloorNumber);
+            _FloorNumber = FloorNumber;
+        }
+        public Building(int FloorNumber, double SizeBuilding)
+        {
+            _FloorNumber = FloorNumber;
+            _SizeBuilding = SizeBuilding;
+        }
+        public double GetFloorMaxSize()
+        {
+            return _SizeBuilding / _FloorNumber;
+        }
+        public int GetFloorNumber()
+        {
+            return _FloorNumber;
+        }
+        public double GetSizeBuilding()
+        {
+            return _SizeBuilding;
+        } 
+
+
+
+
+    }
+}
