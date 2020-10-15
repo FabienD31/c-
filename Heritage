@@ -1,0 +1,232 @@
+using System;
+
+namespace Heritage
+{
+    class MainClass
+    {
+        public static void Main(string[] args)
+        {
+
+            Console.WriteLine("Choisi un animal");
+
+            String[] TableauAnimaux = new string[5] { "Tortue", "Lezard", "Humain", "Elephant", "Singe" };
+            string AnimalChoose = Console.ReadLine();
+
+            switch(AnimalChoose)
+            {
+                case "Tortue" :
+                    Tortue tortueNinja = new Tortue("Tortue Ninja");
+                    tortueNinja.eat();
+                    tortueNinja.move();
+                    tortueNinja.GetLegsCount();
+                    tortueNinja.GetHairyString();
+                    tortueNinja.GetPondToString();
+                    break;
+                case "Lezard":
+                    Lezard lezard = new Lezard("Rango");
+                    lezard.eat();
+                    lezard.move();
+                    lezard.GetLegsCount();
+                    lezard.GetHairyString();
+                    lezard.GetPondToString();
+                    break;
+                case "Humain":
+                    Humain humain = new Humain("Germain");
+                    humain.eat();
+                    humain.move();
+                    humain.GetAccoucheToString();
+                    humain.GetLegsCount();
+                    humain.GetHairyString();
+                    break;
+                case "Elephant":
+                    Elephant elephant = new Elephant("Dumbo");
+                    elephant.eat();
+                    elephant.move();
+                    elephant.GetAccoucheToString();
+                    elephant.GetLegsCount();
+                    elephant.GetHairyString();
+
+                    break;
+                case "Singe":
+                    Singe singe = new Singe("King Kong");
+                    singe.eat();
+                    singe.move();
+                    singe.GetAccoucheToString();
+                    singe.GetLegsCount();
+                    singe.GetHairyString();
+                    break;
+                default:
+                    Console.WriteLine("Attention au Majuscule, sinon tant pis pour toi");
+                    break;
+            }
+
+            //Console.WriteLine("Hello World!");
+        }
+    }
+    public abstract class Animal
+    {
+        protected string _name;
+        protected bool _hairy;
+        protected short _legsCount;
+
+
+        public Animal(string name, bool hairy, short legsCount)
+        {
+            _name = name;
+            _hairy = hairy;
+            _legsCount = legsCount;
+        }
+
+        public virtual void eat()
+        {
+            Console.WriteLine(_name + "mange !");
+        }
+        public virtual void move()
+        {
+            Console.WriteLine(_name + "Je me déplace à ");
+        }
+        public string GetName()
+        {
+            return _name; 
+        }
+        public short GetLegsCount()
+        {
+            return _legsCount;
+        }
+        public bool GetHairy()
+        {
+            return _hairy;
+        }
+        public void GetHairyString()
+        {
+            if (_hairy)
+            {
+                Console.WriteLine("J'ai des poils");
+            }
+            else
+            {
+                Console.WriteLine("Je n'ai pas de poil");
+            }
+        }
+
+    }
+
+    //type d'animal
+    public class Mammifere : Animal
+    {
+        protected bool _accouche;
+
+        public Mammifere(string name,bool hairy, short legsCount) : base( name, hairy, legsCount)
+        {
+            _accouche = true;
+        }
+
+        public bool GetAccouche()
+        {
+            return _accouche;
+        }
+        public void GetAccoucheToString()
+        {
+            if (_accouche)
+            {
+                Console.WriteLine("J'accouche");
+            }
+        }
+    }
+
+    public class Reptile : Animal
+    {
+        protected bool _pond;
+
+        public Reptile(string name) : base(name, false, 4)
+        {
+            _pond = true;
+        }
+
+        public bool GetPond()
+        {
+            return _pond;
+        }
+        public void GetPondToString()
+        {
+            if (_pond)
+            {
+                Console.WriteLine("Je pond");
+            }
+        }
+    }
+
+    //Mammifère
+    public class Singe : Mammifere
+    {
+        public Singe(string name): base(name,true, 2)
+        { }
+        public override void eat()
+        {
+            Console.WriteLine(_name + " Mange des Humains !");
+        }
+        public override void move()
+        {
+            Console.WriteLine(_name + " Bouge dans les arbres !");
+        }
+
+    }
+
+    public class Elephant : Mammifere
+    {
+        public Elephant(string name): base(name,false, 4) { }
+
+        public override void eat()
+        {
+            Console.WriteLine(_name + " Mange des feuilles !");
+        }
+        public override void move()
+        {
+            Console.WriteLine(_name + " Bouge lourdement !");
+        }
+    }
+
+    public class Humain : Mammifere
+    {
+        public Humain(string name): base(name , false, 2)
+        { }
+
+        public override void eat()
+        {
+            Console.WriteLine(_name + " Mange tout et n'importe quoi !");
+        }
+        public override void move()
+        {
+            Console.WriteLine(_name + " Marche");
+        }
+
+    }
+
+    //Reptil
+    public class Tortue : Reptile
+    {
+        public Tortue(string name): base(name) { }
+
+        public override void eat()
+        {
+            Console.WriteLine(_name + " Mange des pizza !");
+        }
+        public override void move()
+        {
+            Console.WriteLine(_name + " se deplace lentement");
+        }
+    }
+    public class Lezard : Reptile
+    {
+        public Lezard(string name) : base(name) { }
+
+        public override void eat()
+        {
+            Console.WriteLine(_name + " Mange des mouches !");
+        }
+        public override void move()
+        {
+            Console.WriteLine(_name + " bouge vite");
+        }
+    }
+}
