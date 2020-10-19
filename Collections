@@ -10,5 +10,5 @@ afficher.Collection(x) --- Afficher a b c d e
 x[2] = x
 x[0] = y
 afficher.Collection(x) --- Afficher y b x d e 
-x.retirer(1)
+x.retirer(b)
 afficher.Collection(x) --- Afficher y x d e
