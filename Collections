@@ -1,0 +1,14 @@
+X est une collection de string
+x.ajoute(0)
+afficher(x.taille) -- Afficher 1
+x.ajoute(1)
+x.ajoute(2)
+x.ajoute(3)
+x.ajoute(4)
+afficher(x.taille) -- Afficher 5
+afficher.Collection(x) --- Afficher 0 1 2 3 4 
+x[2] = 6
+x[0] = 3
+afficher.Collection(x) --- Afficher 3 1 6 3 4 
+x.retirer(1)
+afficher.Collection(x) --- Afficher 3 6 3 4
