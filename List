@@ -1,0 +1,33 @@
+using System;
+
+namespace Liste
+{
+    class MainClass
+    {
+        public static void Main(string[] args)
+        {
+            System.Collections.Generic.List<string> integerCollection = new System.Collections.Generic.List<string>();
+
+            integerCollection.Add("S");
+            integerCollection.Add("A");
+            integerCollection.Add("L");
+            integerCollection.Add("U");
+            integerCollection.Add("T");
+            int LengthOfList = integerCollection.Count;
+
+            Console.WriteLine(LengthOfList);
+            integerCollection.ForEach(integer => Console.Write(integer));
+
+            integerCollection.RemoveAt(0);
+            integerCollection.Remove("L");
+            integerCollection[1] = "T";
+
+            LengthOfList = integerCollection.Count;
+
+            Console.WriteLine("\n" + LengthOfList);
+            integerCollection.ForEach(integer => Console.Write(integer));
+
+
+        }
+    }
+}
