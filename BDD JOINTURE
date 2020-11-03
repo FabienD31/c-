@@ -33,6 +33,6 @@ VALUES
 ('Edouard','Europe'),('Mathieu','Europe'),('Etienne','Europe'),('Barak','USA');
 GO
 
-SELECT Martian_name AS NomDuMartien, BaseMartian_name AS BaseMarsienne, Terrien_name AS ReferentTerrien, ContinentTerrien_name AS ContinentTerrien FROM Martian
+SELECT Martian_name AS NomDuMartien, BaseMartian_name AS BaseMarsien, Terrien_name AS ReferentTerrien, ContinentTerrien_name AS ContinentTerrien FROM Martian
 INNER JOIN Terrien ON Terrien.Terrien_id = Martian.FK_Terrien_id
 GROUP BY Martian_name,Terrien_name, ContinentTerrien_name, BaseMartian_name ;
