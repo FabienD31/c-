@@ -1,0 +1,38 @@
+CREATE DATABASE BDDMartian;
+GO
+
+USE BDDMartian;
+GO
+
+CREATE TABLE Terrien
+(
+	Terrien_id INT PRIMARY KEY IDENTITY(1,1),
+	Terrien_name VARCHAR(30) NOT NULL,
+	ContinentTerrien_name VARCHAR(30) NOT NULL,
+);
+GO
+
+CREATE TABLE Martian
+(
+	Martian_id INT PRIMARY KEY IDENTITY (1,1),
+	Martian_name VARCHAR(30) NOT NULL,
+	BaseMartian_name VARCHAR(30) NOT NULL,
+	SuperieurMartian_name VARCHAR(30) NOT NULL,
+	FK_Terrien_id INT FOREIGN KEY REFERENCES Terrien(Terrien_id),
+);
+GO
+
+INSERT INTO Martian (Martian_name, BaseMartian_name, SuperieurMartian_name, FK_Terrien_id)
+VALUES
+('Urgus', 'Mars1', 'Gugus',1 ), ('Gugus', 'Mars2', 'Mugus',2 ), ('Mugus', 'Mars3', 'Tugus',3 ), ('Tugus', 'Mars4', 'Fugus',4), ('Fugus', 'Mars5', 'Rumus',5),
+('Putus', 'Mars1', 'Fugus',6 ), ('Fugus', 'Mars2', 'Brutus',7), ('Brutus', 'Mars3', 'Nutus',8), ('Nutus', 'Mars4', 'Fabius',9);
+
+INSERT INTO Terrien (Terrien_name, ContinentTerrien_name)
+VALUES
+('Philippe', 'Asie'),('Robert','Asie'),('Roger','Asie'),('Norbert','Asie'),('Donald','Europe'),
+('Edouard','Europe'),('Mathieu','Europe'),('Etienne','Europe'),('Barak','USA');
+GO
+
+SELECT Martian_name AS NomDuMartien, BaseMartian_name AS BaseMarsienne, Terrien_name AS ReferentTerrien, ContinentTerrien_name AS ContinentTerrien FROM Martian
+INNER JOIN Terrien ON Terrien.Terrien_id = Martian.FK_Terrien_id
+GROUP BY Martian_name,Terrien_name, ContinentTerrien_name, BaseMartian_name ;
