@@ -1,0 +1,59 @@
+USE QueteAgregua;
+GO
+
+CREATE TABLE Products (
+    ProductsID INT PRIMARY KEY IDENTITY (1, 1),
+    ProductsName VARCHAR (150) NOT NULL,
+    price DECIMAL NOT NULL,
+	
+);
+CREATE TABLE Categories (
+    CategoriesID INT PRIMARY KEY IDENTITY (1, 1),
+    CategoriesName VARCHAR (150) NOT NULL,
+	FK_ProductsID INT FOREIGN KEY REFERENCES Products(ProductsID)
+);
+
+CREATE TABLE Sales (
+    SalesID INT PRIMARY KEY IDENTITY (1, 1),
+    date dateTime,
+    SalesProductsID INT NOT NULL,
+	CONSTRAINT FK_ProductsID FOREIGN KEY(SalesProductsID)
+	REFERENCES Products(ProductsID)
+);
+
+CREATE TABLE Stock (
+    StockID INT PRIMARY KEY IDENTITY (1, 1),
+    ProductsQuantity INT NOT NULL,
+    StockProductsID INT NOT NULL, 
+	CONSTRAINT FK_Products2ID FOREIGN KEY(StockProductsID) 
+	REFERENCES Products(ProductsID) ON DELETE CASCADE
+);
+
+GO
+INSERT INTO Categories (CategoriesName) VALUES ('Policier'),('SF'),('Classique');
+
+INSERT INTO Products (ProductsName, price, FK_CategoriesID)
+VALUES ('Soeurs-Bernard Minier', 25.5, 1), ('Cari Mora-Thomas Harris', 9.90, 1), ('Serum-Henry Loevenbruck', 24.9, 1), 
+('Binti-Nnedi Okorafor', 9.99, 2), ('Les premiers nÈs-Arthur C. Clark', 12.5, 2), ('Le livre sans nom-Anonyme', 19.2, 2),
+('Voyage au centre de la Terre-Jules Vernes', 19.9, 3), ('Le paradis perdu-John Milton', 12, 3),('Morphine-MikhaÔl Boulgakov', 22, 3);
+
+INSERT INTO Sales (date, SalesProductsID) VALUES (GetDate(),1),(GetDate(),2),(GetDate(),3),(GetDate(),4),(GetDate(),5),
+(GetDate(),6),(GetDate(),7),(GetDate(),8),(GetDate(),9),(GetDate(),1),(GetDate(),2),(GetDate(),3),(GetDate(),4),(GetDate(),5),
+(GetDate(),6),(GetDate(),7),(GetDate(),8),(GetDate(),9);
+
+INSERT INTO Stock (ProductsQuantity, StockProductsID) VALUES (10,1), (5,2), (15,3), (10,4), (10,5), (10,6), (5, 7), (6,8), (7,9);
+
+USE QueteAgregua;
+SELECT SUM(SalesProductsID) AS NBVente, SUM(Price) AS ChiffreDaffaire , CategoriesName FROM Sales
+INNER JOIN Categories ON FK_ProductsID = CategoriesID
+INNER JOIN Products ON FK_ProductsID = ProductsID
+GROUP BY CategoriesName;
+
+SELECT SUM(SalesProductsID) AS VenteApres2018, CategoriesName AS Categorie FROM Sales
+INNER JOIN Categories ON FK_ProductsID = CategoriesID
+INNER JOIN Products ON FK_ProductsID = ProductsID 
+WHERE date > '2018-31-12'
+GROUP BY CategoriesName
+
+
+
