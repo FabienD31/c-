@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace queteRoutage.Controllers
 {
-                                                                        //Routage par Attribut
+                                                                        //Routage par Convention
    
     public class Hello2Controller : ControllerBase
     {
